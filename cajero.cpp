@@ -21,7 +21,7 @@ double deposito(double monto)
    
    }
     
-   else if(usuario =="juan" && nip ==auxiliar2)
+   else if(usuario =="juan" && nip==auxiliar2)
    {
       
        saldo_inicial2=saldo_inicial2+monto;
@@ -50,7 +50,7 @@ double deposito(double monto)
  	
  	if(usuario=="axel")
  	{
- 		if(saldo_inicial >= monto_2)
+ 		if(saldo_inicial >= monto_2 && monto_2>0)
  		{
  			saldo_inicial = saldo_inicial - monto_2;
  			cout<<" dinero en cuentas es :"<<saldo_inicial;
@@ -69,7 +69,7 @@ double deposito(double monto)
 	   
 	   if(usuario=="juan")		 
 	  {
-	  		if(saldo_inicial2 >= monto_2)
+	  		if(saldo_inicial2 >= monto_2 && monto_2>0)
  		{
  			saldo_inicial2 =saldo_inicial2- monto_2;
  			cout<<" dinero en cuentas es :"<<saldo_inicial2;
@@ -88,7 +88,7 @@ double deposito(double monto)
 	  
 	  if(usuario=="francisco")
 	  {
-	  		if(saldo_inicial3 >= monto_2)
+	  		if(saldo_inicial3 >= monto_2 && monto_2>0)
  		{
  			saldo_inicial3= saldo_inicial3 - monto_2;
  			cout<<" dinero en cuentas es :"<<saldo_inicial3;
@@ -99,7 +99,7 @@ double deposito(double monto)
  		
  		else{
  				
- 				cout<<"no tienes dinero en tu cuenta para retirar";
+ 				cout<<"no tienes suficiente  dinero en tu cuenta para retirar o el numero es menor que 0";
 			 }  
 	  	
 	  }
@@ -158,173 +158,90 @@ double deposito(double monto)
 	   
 	   
   }//cierre de la funcion   cambio nip
+  
+  double transfe()
+  {
+  	 string nom_tarjeta;
+  	 int transa=0;
+  	cout<<" ingrese el nombre de tarjeta ";cin>>nom_tarjeta;
+  	if(nom_tarjeta=="axel"|| nom_tarjeta=="juan" || nom_tarjeta=="francisco")
+  	{
+  	   cout<<"ingrese el deposito "	;cin>>transa;
+  	   if((transa<=saldo_inicial)||(transa<=saldo_inicial2)||(transa<=saldo_inicial3)&&(transa>0))
+  	   {
+  	   	
+  	   	if((usuario=="axel")&&(nom_tarjeta=="juan"))
+  	   	{
+  	   		 saldo_inicial=saldo_inicial-transa;
+  	   		 saldo_inicial2=saldo_inicial2+transa;
+	    }
+	    else if((usuario=="axel")&&(nom_tarjeta=="francisco"))
+	    {
+	    	
+	    	saldo_inicial=saldo_inicial-transa;
+  	   		 saldo_inicial3=saldo_inicial3+transa;
+	    	
+		}
+		
+		else if((usuario=="juan")&&(nom_tarjeta=="axel"))
+		{
+		    saldo_inicial2=saldo_inicial2-transa;
+  	   		 saldo_inicial=saldo_inicial+transa;
+  	   		 	
+		}
+		
+		else if((usuario=="juan")&&(nom_tarjeta=="francisco"))
+		{
+		   saldo_inicial2=saldo_inicial2-transa;
+  	   		 saldo_inicial3=saldo_inicial3+transa;	
+		}
+		
+			else if((usuario=="francisco")&&(nom_tarjeta=="axel"))
+  	   	{
+  	   		 saldo_inicial3=saldo_inicial3-transa;
+  	   		 saldo_inicial=saldo_inicial+transa;
+  	   		 
+  	   	
+	    }
+	    else if((usuario=="francisco")&&(nom_tarjeta=="juan"))
+	    {
+	    		 saldo_inicial3=saldo_inicial3-transa;
+  	   		 saldo_inicial2=saldo_inicial2+transa;
+	    	
+		}
+  	cout<<"transferencia exitosa , el monto transferido fue de:"<< transa;
+  	   
+  	
+	  
+	  }
+	  
+  	 else
+		 {
+  	   	
+  	   	   cout<<" advertencia la tranasaccion debe de ser mayor a 0 o la transaccion debe de ser menor al saldo";
+		 }  
+  	   
+  	  
+	}
+	
+	    		else
+	{
+		cout<<"no encontro el usuario";
+		cout<<endl;
+	}
+  		
+
+  	 
+  	
+  }//cierre de la funcion transfe
  
- float transa()
- {
- 	
-   if(nip==auxiliar && usuario=="axel")
-    {
-       cout<<"ingresa el monto que vas a transferir: ";cin>>transf;
-    	cout<<endl;
-	     if(saldo_inicial>transf) 
-	    {
-	    	cout<<"ingrese el nip al que va transferir dinero: "; cin>>nip;
-	    	cout<<endl;
-	    	
-	    	 if(nip==auxiliar2)
-	    	{
-	    		saldo_inicial2=saldo_inicial2+transf;
-	    		
-	    		saldo_inicial=saldo_inicial-transf;
-	    		
-	    		cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial2;
-	    		
-	    		
-			}
-	
-		
-		
-	      
-	         else if(nip == auxiliar3)
-	    	{
-	    		
-	    		saldo_inicial3=saldo_inicial3+transf;
-	    		saldo_inicial=saldo_inicial-transf;
-	    		
-	    	cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial3;
-	    		
-			}
-			
-	      	else
-	    {
-	    	cout<<"el nip que proporciono es incorrecto";
-		}
-		
-		
-		}//fin de la condicional del saldo
-	     
-		
-    	 	else
-        {
-        	
-        	cout<<"no  tienes suficiente dinero para transferir: ";
-		}
-	
- 	
-    
-	}//fin del nip axel
-	
-	
-	//aqui empieza la comparacion juan
-	if(nip==auxiliar2 && usuario=="juan")
-    {
-       cout<<"ingresa el monto que vas a transferir: ";cin>>transf;
-    	cout<<endl;
-	     if(saldo_inicial2>transf) 
-	    {
-	    	cout<<"ingrese el nip al que va transferir dinero: "; cin>>nip;
-	    	cout<<endl;
-	    	
-	    	if(nip == auxiliar)
-	    	{
-	    		saldo_inicial=saldo_inicial+transf;
-	    		
-	    		saldo_inicial2=saldo_inicial2-transf;
-	    		
-	    		cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial;
-	    		cout<<endl;
-	    		
-	    		
-			}
-		
-		
-	      
-	         else if(nip==auxiliar3)
-	    	{
-	    		
-	    		saldo_inicial3=saldo_inicial3+transf;
-	    		saldo_inicial2=saldo_inicial2-transf;
-	    		
-	    	cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial3;
-	    	cout<<endl;
-	    		
-			}
-			
-	    	else
-	    {
-	    	cout<<"el nip que proporciono es incorrecto";
-		}
-		
-		
-		}//fin de la condicional del saldo
-	
-    	 	else
-        {
-        	
-        	cout<<"no  tienes suficiente dinero para transferir: ";
-		}
-	
-       } //aqui termina la condicion del usuario 2
-       
-       //aqui comienza la transferencia francisco
-       if(nip==auxiliar3 && usuario=="francisco")
-    {
-       cout<<"ingresa el monto que vas a transferir: ";cin>>transf;
-    	cout<<endl;
-	     if(saldo_inicial3>transf) 
-	    {
-	    	cout<<"ingrese el nip al que va transferir dinero: "; cin>>nip;
-	    	cout<<endl;
-	    	
-	    	if(nip == auxiliar)
-	    	{
-	    		saldo_inicial=saldo_inicial+transf;
-	    		
-	    		saldo_inicial3=saldo_inicial3-transf;
-	    		
-	    		cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial;
-	    		cout<<endl;
-	    		
-	    		
-			}
-		
-		
-	      
-	         else if(nip==auxiliar2)
-	    	{
-	    		
-	    		saldo_inicial2=saldo_inicial2+transf;
-	    		saldo_inicial3=saldo_inicial3-transf;
-	    		
-	    	cout<<" transferencia exitosa su saldo actual es : "<<saldo_inicial2;
-	    	cout<<endl;
-	    		
-			}
-			
-	    	else
-	    {
-	    	cout<<"el nip que proporciono es incorrecto";
-		}
-		
-		
-		}//fin de la condicional del saldo
-	
-    	 	else
-        {
-        	
-        	cout<<"no  tienes suficiente dinero para transferir: ";
-		}
-	
-       }
-       
-       
- 	 
- 	}//fin de la funcion transacciones 
+ 
  
     void consulta()
     {
-    	system("cls");
-    	if(usuario=="axel" &&(nip==auxiliar))
+    	 cout<<" digite su nip para realizar la consulta: ";cin>>nip;
+    	
+    	if(nip==auxiliar)
     	{
     	
 		   cout<<" su saldo actual es: "<<saldo_inicial;
@@ -332,13 +249,13 @@ double deposito(double monto)
     		
 		}//fin del if axel
     	
-    	else if(usuario=="juan" && (nip==auxiliar2))
+    	else if (nip==auxiliar2 )
     	{
     		cout<<" su saldo actual es: "<<saldo_inicial2;
 		   cout<<endl;	
     		
 		}
-		else if(usuario=="francisco" && (nip==auxiliar3))
+		else if(nip==auxiliar3 )
 		{
 				cout<<" su saldo actual es: "<<saldo_inicial3;
 		       cout<<endl;	
@@ -372,6 +289,26 @@ while(contador!=3)
 			
 			cout<<" bienvenido al banco garcia";
 			cout<<endl;
+			
+			if(nip==auxiliar)
+			{
+				
+		       cout<<" saldo inicial: "<<saldo_inicial;
+		       cout<<endl;
+				
+			}
+			else if(nip==auxiliar2)
+			{
+			     cout<<" saldo inicial: "<<saldo_inicial2;
+				 cout<<endl;	
+			}
+			
+			 else
+			 {
+			   cout<<" saldo inicial: "<<saldo_inicial3;
+			   cout<<endl;	
+			   	
+			 }
 			cout<<"_______________________________";
 			cout<<endl;
 			cout<<"presione 1.- para deposito"<<endl;           //hacemos un menu para el usuario
@@ -382,7 +319,7 @@ while(contador!=3)
 			cout<<"presione 6.- para cambiar de usuario "<<endl;
 			
 			cout<<"____________________________________"<<endl;
-			
+			 string nip_aux="";
 			cout<<"elija una opcion: ";cin>>opc; //leemos la opcion para el menu
 			system("cls");
 			switch(opc)
@@ -395,7 +332,16 @@ while(contador!=3)
 					  cout<<"ingrese el monto que quiere depositar: "; 
 					  cin>>monto;
                       cout<<endl; 
-					  deposito(monto);  
+                      if(monto>0)
+                      {
+                      	 deposito(monto);  
+					  }
+					  else
+					  {
+					  	cout<<" el monto debe ser mayor que cero";
+					  }
+					 
+					 
 				break;
 				
 					
@@ -414,9 +360,18 @@ while(contador!=3)
 					 cambio_nip();
 					break;
 					case 4:
-						system("cls");
-						 cout<<"transacciones:"<<endl;
-						  transa();
+
+						
+						 cout<<"Ingrese el Nip?:";
+						 cin>>nip_aux;
+						 if(nip_aux==nip)
+						 {
+						 	 
+						     transfe();
+						 	    
+						 	
+						 }
+						 
 						 break;
 						 
 					case 5:
