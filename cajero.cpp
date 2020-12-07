@@ -6,11 +6,11 @@ string usuario="",nip="";
 int respuesta=0, contador=0,opc=0;
 double saldo_inicial=0,saldo_inicial2=0,saldo_inicial3=0,monto,transf=0;
 double monto_2=0,retiro1=0,retiro2=0,retiro3=0;
-string auxiliar="12345",auxiliar2="24689",auxiliar3="67890";
+string auxiliar="1234",auxiliar2="2468",auxiliar3="6789";
 double deposito(double monto)
    {
 
-   if(usuario=="axel" && nip==auxiliar)
+   if(usuario=="1234567890" && nip==auxiliar)
    {
        
        saldo_inicial=saldo_inicial+monto;
@@ -21,7 +21,7 @@ double deposito(double monto)
    
    }
     
-   else if(usuario =="juan" && nip==auxiliar2)
+   else if(usuario =="1234512345" && nip==auxiliar2)
    {
       
        saldo_inicial2=saldo_inicial2+monto;
@@ -48,7 +48,7 @@ double deposito(double monto)
  double retiro(double monto_2)
  {
  	
- 	if(usuario=="axel")
+ 	if(usuario=="1234567890")
  	{
  		if(saldo_inicial >= monto_2 && monto_2>0)
  		{
@@ -67,7 +67,7 @@ double deposito(double monto)
 					 		 		 	 
 	 }//cierre del if usuario axel
 	   
-	   if(usuario=="juan")		 
+	   if(usuario=="1234512345")		 
 	  {
 	  		if(saldo_inicial2 >= monto_2 && monto_2>0)
  		{
@@ -86,7 +86,7 @@ double deposito(double monto)
 	  	
 	  }
 	  
-	  if(usuario=="francisco")
+	  if(usuario=="6789067890")
 	  {
 	  		if(saldo_inicial3 >= monto_2 && monto_2>0)
  		{
@@ -116,18 +116,20 @@ double deposito(double monto)
   	 cout<<"ingrese su nip : ";cin>>nip;
   	 cout<<endl;
   	 
-  	 if(usuario=="axel" && nip==auxiliar)
+  	 if(usuario=="1234567890" && nip==auxiliar)
      {
-     	cout<<" usuario :"<< usuario;
-     	cout<<endl;
+     	cout<<" usuario :"<< usuario<<endl;
      	
      	cout<<"digite su nuevo nip: ";cin>>auxiliar;
-     	nip=auxiliar;
+     
+     	
+     	nip=auxiliar;	
      	cout<<"el cambio fue correcto ";
+			 		
      	
       }//cierre de la condicional  nip axel
        
-	   else if(usuario=="juan" && nip==auxiliar2)
+	   else if(usuario=="1234512345" && nip==auxiliar2)
 	   {
 	   	  cout<<" usuario : "<<usuario;
 	   	  cout<<endl;
@@ -137,7 +139,7 @@ double deposito(double monto)
 	   	  cout<<"el cambio de nip fue correcto: ";	  
 	   	
 	   }
-	   else if(usuario=="francisco" && nip==auxiliar3)
+	   else if(usuario=="6789067890" && nip==auxiliar3)
 	   {
 	   	
 	   	 cout<<" usuario : "<<usuario;
@@ -161,21 +163,26 @@ double deposito(double monto)
   
   double transfe()
   {
+  	 
   	 string nom_tarjeta;
   	 int transa=0;
-  	cout<<" ingrese el nombre de tarjeta ";cin>>nom_tarjeta;
-  	if(nom_tarjeta=="axel"|| nom_tarjeta=="juan" || nom_tarjeta=="francisco")
+  	cout<<" ingrese el numero de tarjeta ";cin>>nom_tarjeta;
+  	if(nom_tarjeta=="1234567890"|| nom_tarjeta=="1234512345" || nom_tarjeta=="6789067890")
   	{
+  		 
   	   cout<<"ingrese el deposito "	;cin>>transa;
-  	   if((transa<=saldo_inicial)||(transa<=saldo_inicial2)||(transa<=saldo_inicial3)&&(transa>0))
+  	   if((transa<=saldo_inicial)  || (transa<=saldo_inicial2)|| (transa<=saldo_inicial3) && (transa>0))
   	   {
   	   	
-  	   	if((usuario=="axel")&&(nom_tarjeta=="juan"))
+  	   	 
+  	   	 
+  	   	if(usuario=="1234567890" && nom_tarjeta=="1234512345")
   	   	{
   	   		 saldo_inicial=saldo_inicial-transa;
   	   		 saldo_inicial2=saldo_inicial2+transa;
+  	   		 
 	    }
-	    else if((usuario=="axel")&&(nom_tarjeta=="francisco"))
+	    else if(usuario=="1234567890" && nom_tarjeta=="6789067890")
 	    {
 	    	
 	    	saldo_inicial=saldo_inicial-transa;
@@ -183,27 +190,27 @@ double deposito(double monto)
 	    	
 		}
 		
-		else if((usuario=="juan")&&(nom_tarjeta=="axel"))
+		else if(usuario=="1234512345" && nom_tarjeta=="1234567890")
 		{
 		    saldo_inicial2=saldo_inicial2-transa;
   	   		 saldo_inicial=saldo_inicial+transa;
   	   		 	
 		}
 		
-		else if((usuario=="juan")&&(nom_tarjeta=="francisco"))
+		else if(usuario=="1234512345" && nom_tarjeta=="6789067890")
 		{
 		   saldo_inicial2=saldo_inicial2-transa;
   	   		 saldo_inicial3=saldo_inicial3+transa;	
 		}
 		
-			else if((usuario=="francisco")&&(nom_tarjeta=="axel"))
+			else if(usuario=="6789067890" && nom_tarjeta=="1234567890")
   	   	{
   	   		 saldo_inicial3=saldo_inicial3-transa;
   	   		 saldo_inicial=saldo_inicial+transa;
   	   		 
   	   	
 	    }
-	    else if((usuario=="francisco")&&(nom_tarjeta=="juan"))
+	    else if(usuario=="6789067890" && nom_tarjeta=="1234512345")
 	    {
 	    		 saldo_inicial3=saldo_inicial3-transa;
   	   		 saldo_inicial2=saldo_inicial2+transa;
@@ -276,7 +283,7 @@ while(contador!=3)
 		cout<<" \n ingrese el nombre del usuario: "; cin>>usuario;
 		cout<<" \n ingrese el password del usuario: "; cin>>nip;
 		 
-		if ((usuario == "axel" && nip == auxiliar)||(usuario == "juan" && nip == auxiliar2)||(usuario=="francisco" && nip==auxiliar3))
+		if ((usuario == "1234567890" && nip == auxiliar)||(usuario == "1234512345" && nip == auxiliar2)||(usuario=="6789067890" && nip==auxiliar3))
 		{
 	   system("cls");		
 	do{
@@ -350,7 +357,14 @@ while(contador!=3)
 					cout<<" retiro bancarias"<<endl;
 					cout<<"ingrese el monto que quiere retirar: "; 
 					  cin>>monto_2;
-					  retiro(monto_2);
+					  if(monto_2>0)
+					  {
+					   retiro(monto_2);	
+					  }
+					  else
+					  {
+					  	cout<<"el monto tiene que ser mayor a 0";
+					  }
 					
 				break;
 					
