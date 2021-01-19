@@ -4,7 +4,7 @@
 using namespace std;
 string usuario="",nip="";
 int respuesta=0, contador=0,opc=0;
-double saldo_inicial=0,saldo_inicial2=0,saldo_inicial3=0,monto,transf=0;
+double saldo_inicial=0,saldo_inicial2=0,saldo_inicial3=0,monto,transf=0,pag_agua=0,pag_agua2=0,pag_agua3=0,pag_luz=0,pag_luz2=0,pag_luz3=0;
 double monto_2=0,retiro1=0,retiro2=0,retiro3=0;
 string auxiliar="1234",auxiliar2="2468",auxiliar3="6789";
 double deposito(double monto)
@@ -274,6 +274,84 @@ double deposito(double monto)
     		
 		}
 	}//cierre de la funcion consulta de saldo
+	
+	double pagos()
+	{
+		cout<<" digite el monto que va pagar ";cin>>monto;
+		if((saldo_inicial>=monto && monto>0)||(saldo_inicial2>=monto && monto>0)||(saldo_inicial3>=monto && monto>0)) 
+		{
+				cout<<" digite 1.- si su pago para la comision de agua "<<'\n';
+			cout<<" digite 2.- si su pago es para a comision de luz "<<'\n';
+			cout<<" digite la opcion que desea ";cin>>opc;
+				switch(opc)
+				{
+					case 1:
+						  if (usuario=="1234567890")
+						  {
+						 	saldo_inicial=saldo_inicial-monto;
+						 	pag_agua+=monto;
+						   cout<<" el  pago que usted transfirio ala comision de agua es  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial<<'\n';
+						   cout<<"pago que ha hecho ala comision de agua: "<<pag_agua<<'\n';
+						  
+						  }
+						   else if(usuario=="1234512345")
+						   {
+						   	 saldo_inicial2=saldo_inicial2-monto;
+						   	 pag_agua2+=monto;
+						   	 cout<<" el  pago transferido ala comision de agu es de  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial2;
+						    cout<<"pago que ha hecho ala comision de agua: "<<pag_agua2<<'\n';
+						   }
+						   else
+						   {
+						   	saldo_inicial3=saldo_inicial3-monto;
+						   	pag_agua3+=monto;
+						   	cout<<" el  pago transferido ala comision de agu es de  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial3;
+						    cout<<"pago que ha hecho ala comision de agua: "<<pag_agua3<<'\n';
+						   }
+						   
+						   break;//fin del caso 1
+					case 2:  
+					   if (usuario=="1234567890")
+						  {
+						 	saldo_inicial=saldo_inicial-monto;
+						 	pag_luz+=monto;
+						   cout<<" el  pago que usted transfirio ala comision de agua es  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial<<'\n';
+						   cout<<"pago que ha hecho ala comision de agua: "<<pag_luz<<'\n';
+						  
+						  }
+						   else if(usuario=="1234512345")
+						   {
+						   	 saldo_inicial2=saldo_inicial2-monto;
+						   	 pag_luz2+=monto;
+						   	 cout<<" el  pago transferido ala comision de agu es de  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial2;
+						    cout<<"pago que ha hecho ala comision de agua: "<<pag_luz2<<'\n';
+						   }
+						   else
+						   {
+						   	saldo_inicial3=saldo_inicial3-monto;
+						   	pag_luz3+=monto;
+						   	cout<<" el  pago transferido ala comision de agu es de  : " <<monto<<'\n';
+						   cout<<" su saldo actual es de: "<<saldo_inicial3;
+						    cout<<"pago que ha hecho ala comision de agua: "<<pag_luz3<<'\n';
+						   } 
+				      
+					break;
+			}
+		}
+		else
+		{
+		  cout<<"no tiene suficiente dinero para transferir o digite numeros mayores que cero "<<'\n';
+			
+		}
+		
+		
+		
+	}//cierre de la funcion pagos 
  
  //comienzo del int main 
 
@@ -318,14 +396,15 @@ while(contador!=3)
 			 }
 			cout<<"_______________________________";
 			cout<<endl;
-			cout<<"presione 1.- para deposito"<<endl;           //hacemos un menu para el usuario
-			cout<<"presione 2.- para retiro"<<endl;
-			cout<<"presion 3.- para cambiar nip"<<endl;
-			cout<<"presione 4.- para hacer transacciones"<<endl;
-			cout<<"presione 5.- para consultar su saldo"<<endl;
-			cout<<"presione 6.- para cambiar de usuario "<<endl;
+			cout<<"presione 1.- para deposito"<<'\n';           //hacemos un menu para el usuario
+			cout<<"presione 2.- para retiro"<<'\n';
+			cout<<"presion 3.- para cambiar nip"<<'\n';
+			cout<<"presione 4.- para hacer transacciones"<<'\n';
+			cout<<"presione 5.- para consultar su saldo"<<'\n';
+			cout<<"presione 6.- para hacer pagos de luz y agua  "<<'\n';
+			cout<<"presione 7.- para cambiar de usuario "<<'\n';
 			
-			cout<<"____________________________________"<<endl;
+			cout<<"____________________________________"<<'\n';
 			 string nip_aux="";
 			cout<<"elija una opcion: ";cin>>opc; //leemos la opcion para el menu
 			system("cls");
@@ -393,9 +472,12 @@ while(contador!=3)
 						cout<<"consulta de saldo: "<<endl;
 						   consulta();
 						break;
+						case 6:
+							pagos();
+						break;
 						
 					
-				   case 6:
+				   case 7:
 				    break;
 					break;
 					
@@ -411,7 +493,7 @@ while(contador!=3)
 			system("cls");
 		}			
 				
-}while(opc!=6); // termino del ciclo while condicion para que cuando el usuario de mas de 3 intentos se cierre el programa	}while(respuesta!=2);	
+}while(opc!=7); // termino del ciclo while condicion para que cuando el usuario de mas de 3 intentos se cierre el programa	}while(respuesta!=2);	
 
 }
 	else 
