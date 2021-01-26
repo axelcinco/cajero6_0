@@ -7,12 +7,14 @@
 using namespace std;
 string usuario="",nip="";
 int respuesta=0, contador=0,opc=0;
-double saldo_inicial=0,monto,transf=0,pag_agua=0,pag_agua2=0,pag_agua3=0,pag_luz=0,pag_luz2=0,pag_luz3=0;
-double monto_2=0,retiro1=0;
+int saldo_inicial=0,monto,transf=0,pag_agua=0,pag_agua2=0,pag_agua3=0,pag_luz=0,pag_luz2=0,pag_luz3=0;
+int  monto_2=0,retiro1=0;
 string auxiliar_usua,auxiliar_nip,num_transfe;
+
 string nombre_archivo;
 fstream archivo;
-bool busqueda=false;
+bool busqueda=false;  //archivos para poder crear los archivos o manipularlos
+
 
 
 
@@ -22,13 +24,13 @@ void crear_usuario()
 	string cadena="1234567890";
 	int i;
 	string tarjeta;
-	srand(time(NULL));
+	srand(time(NULL)); //esto sirve para que no se repite el mismo numero aleatorio
 
 	for(i=0; i<10; i++)
 	
 	{
 		                                           
-         tarjeta+=cadena[rand()%(0-10)];
+         tarjeta+=cadena[rand()%(0-10)];              
          
 	}
 	
@@ -50,6 +52,8 @@ void crear_usuario()
 	 
 	
 }
+
+
 
 void decision()
 {
@@ -292,7 +296,7 @@ double deposito(double monto)
  //comienzo del int main 
 
 int main() {
-	decision();
+	decision(); //le mando a hablar ala funcion  decision para crear un usuario nuevo
 	system ("cls");
 	
 while(contador!=3)
@@ -345,8 +349,16 @@ while(contador!=3)
                       cout<<endl; 
                       if(monto>0)
                       {
+                      	 if(monto % 20==0 || monto % 50==0)
+                      	 {
                       	 deposito(monto);  
                       	  guardar_datos();
+						   }
+						else
+						{
+							cout<<"no se puede depositar esa cantidad "<<endl;
+						}
+                      	 
 					  }
 					  else
 					  {
@@ -364,8 +376,15 @@ while(contador!=3)
 					  cin>>monto_2;
 					  if(monto_2>0)
 					  {
-					   retiro(monto_2);	
-					   	guardar_datos();
+					  	 if(monto_2 % 20==0 || monto_2 % 50==0)
+					  	 {
+					  	   retiro(monto_2);	
+					   	  guardar_datos();
+						   }
+					   else
+					   {
+					   	  cout<<"no se puede retirar esa cantidad "<<endl;
+					   }
 					  }
 					  else
 					  {
